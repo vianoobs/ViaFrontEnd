@@ -18,8 +18,11 @@
         grid-area: sidebar;
     }
 
-    .box {
-        background-color: orange;
+    @media screen and (min-width: 1024px) {
+        #sidebar {
+            display: none;
+        }
     }
+
 
 </style>

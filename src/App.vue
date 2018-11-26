@@ -11,6 +11,22 @@
     };
 </script>
 
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-size: .7em;
+    }
+
+    .box {
+        background-color: orange;
+    }
+
+</style>
 
 <style scoped>
 
@@ -24,18 +40,29 @@
                 "sidebar";
     }
 
-    #footer {
-        grid-area: footer;
-        display: none;
+    @media screen and (min-width: 768px) {
+
+        .homeView {
+            grid-template-columns: 6% 35% auto;
+            grid-template-rows: 100%;
+            grid-gap: .1em;
+            grid-template-areas:
+                    "sidebar budgetAndFinancials purchase";
+        }
+
     }
 
-    * {
-        box-sizing: border-box;
-    }
+    @media screen and (min-width: 1024px) {
 
-    body {
-        margin: 0;
-        font-size: .7em;
+        .homeView {
+            grid-template-columns: 45% 55%;
+            grid-template-rows: .8fr 8.7fr .5fr;
+            grid-gap: .1em;
+            grid-template-areas:
+                    "header header"
+                    "budgetAndFinancials purchase"
+                    "footer footer";
+        }
     }
 
 </style>
@@ -48,10 +75,4 @@
         </div>
         <router-view/>
     </div>
-</template>
-        <div id="header" class="box">Budget Stuff</div>
-        <div id="sidebar" class="box">Sidebar</div>
-        <div id="purchase" class="box">Purchase</div>
-        <div id="budgetAndFinancialsContainer" class="box flex-container scrollSide"></div>
-        <div id="footer" class="box">Footer</div>
 -->

@@ -4,8 +4,9 @@
 
 <script>
     export default {
-        name: "budgetandFinancialsContainer"
-    }
+        name: 'budgetandFinancialsContainer',
+    };
+
 </script>
 
 <style scoped>
@@ -20,11 +21,15 @@
         justify-content: flex-start;
     }
 
-    .box {
-        background-color: orange;
-    }
-
     .scrollSide {
         overflow-y: auto;
     }
+
+    @media screen and (min-width: 1024px) {
+
+        .flex-container {
+            flex-direction: row;
+        }
+    }
+
 </style>

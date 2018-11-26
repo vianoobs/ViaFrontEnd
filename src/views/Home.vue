@@ -4,6 +4,7 @@
       <sidebar/>
       <purchase/>
       <budgetandFinancialsContainer/>
+      <budfooter/>
   </div>
 </template>
 
@@ -13,13 +14,14 @@ import budheader from '../components/budheader.vue';
 import sidebar from '../components/sidebar.vue';
 import purchase from '../components/purchase.vue';
 import budgetandFinancialsContainer from '../components/budgetandFinancialsContainer.vue';
-
+import budfooter from '../components/budfooter.vue';
 @Component({
   components: {
         budheader,
         sidebar,
         purchase,
         budgetandFinancialsContainer,
+        budfooter,
   },
 })
 export default class Home extends Vue {}

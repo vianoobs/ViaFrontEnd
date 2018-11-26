@@ -17,8 +17,12 @@
         display: none;
     }
 
-    .box {
-        background-color: orange;
+    @media screen and (min-width: 768px) {
+
+        #purchase {
+            display: block;
+        }
+
     }
 
 </style>

@@ -18,10 +18,13 @@
     #budheader {
         grid-area: header;
         display: none;
+        padding: 1em 0;
     }
 
-    .box {
-        background-color: orange;
+    @media screen and (min-width: 1024px) {
+        #budheader {
+            display: block;
+        }
     }
 
 </style>
