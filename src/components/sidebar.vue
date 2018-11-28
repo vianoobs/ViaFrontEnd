@@ -10,17 +10,21 @@
 
 </script>
 
+<style>
+
+</style>
 
 
 <style scoped>
 
     #sidebar {
         grid-area: sidebar;
+        display: none;
     }
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
         #sidebar {
-            display: none;
+            display: block;
         }
     }
 

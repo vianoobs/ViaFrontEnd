@@ -34,10 +34,10 @@
         height: 100vh;
         display: grid;
         grid-gap: .1em;
-        grid-template-rows: 9.2fr .8fr;
+        grid-template-rows: 100%;
         grid-template-areas:
                 "budgetAndFinancials"
-                "sidebar";
+                ;
     }
 
     @media screen and (min-width: 768px) {
