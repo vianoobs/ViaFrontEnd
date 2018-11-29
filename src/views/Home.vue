@@ -3,7 +3,7 @@
       <budheader/>
       <sidebar/>
       <mobileSidebar/>
-      <purchase/>
+      <purchase></purchase>
       <budgetandFinancialsContainer/>
       <budfooter/>
   </div>
@@ -30,4 +30,6 @@ import budfooter from '../components/budfooter.vue';
 })
 
 export default class Home extends Vue {}
+
 </script>
+

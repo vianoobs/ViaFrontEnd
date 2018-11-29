@@ -4,9 +4,9 @@
     </div>
 </template>
 
-
 <script>
-    export default {
+
+export default {
         name: 'App',
     };
 </script>
@@ -36,8 +36,7 @@
         grid-gap: .1em;
         grid-template-rows: 100%;
         grid-template-areas:
-                "budgetAndFinancials"
-                ;
+                "budgetAndFinancials";
     }
 
     @media screen and (min-width: 768px) {

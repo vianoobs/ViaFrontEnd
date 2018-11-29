@@ -1,5 +1,5 @@
 <template>
-    <div id="budgetAndFinancialsContainer" class="box flex-container scrollSide"></div>
+    <div id="budgetAndFinancialsContainer" class="box flex-container scrollSide">Budget and Finance</div>
 </template>
 
 <script>
@@ -37,3 +37,4 @@
     }
 
 </style>
+

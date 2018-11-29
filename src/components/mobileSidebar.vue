@@ -1,25 +1,26 @@
 <template>
     <div id="mobileSidebar">
-    <div id="mobileMenuSidebar" class="box"><button class="circle" v-bind:style="buttonCircle" v-on:click="miniOpen = !miniOpen">M</button></div>
-        <div id="statsBubble" class="minicircle" v-if="miniOpen"><span>S</span></div>
-        <div id="purchaseBubble" class="minicircle" v-if="miniOpen"><span>P</span></div>
-        <div id="settingBubble" class="minicircle" v-if="miniOpen"><span>O</span></div>
+        <div id="mobileMenuSidebar" class="box"><button class="circle" v-bind:style="buttonCircle" v-on:click="miniOpen = !miniOpen">M</button></div>
+        <div v-if="miniOpen"><button id="statsBubble" class="minicircle">S</button></div>
+        <div v-if="miniOpen"><button id="purchaseBubble" class="minicircle">P</button></div>
+        <div v-if="miniOpen"><button id="settingBubble" class="minicircle">O</button></div>
     </div>
 </template>
 
 <script>
-    export default {
+
+export default {
         name: 'mobileSidebar',
 
         data: () => {
             return {
-                buttonCircle: {
-                    background: 'blue',
-                },
-                miniOpen: false,
-            };
-        },
-    };
+                    buttonCircle: {
+                        background: 'blue',
+                    },
+                    miniOpen: false,
+                };
+            },
+        };
 
 </script>
 
@@ -29,15 +30,15 @@
 
 <style scoped>
 
-    span {
-        text-align: center;
-        line-height: 35px;
-        position: absolute;
-        right: 14px;
-        font-weight: bold;
-        color: white;
-        font-size: 1em;
-    }
+    /*span {*/
+        /*text-align: center;*/
+        /*line-height: 35px;*/
+        /*position: absolute;*/
+        /*right: 14px;*/
+        /*font-weight: bold;*/
+        /*color: white;*/
+        /*font-size: 1em;*/
+    /*}*/
 
     #statsBubble {
         position: fixed;

@@ -1,9 +1,11 @@
+
 <template>
     <div id="purchase" class="box">Purchase</div>
 </template>
 
 
 <script>
+
     export default {
         name: 'purchase',
     };
