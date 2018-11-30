@@ -10,37 +10,39 @@
             <div v-if="miniOpen"><button id="settingBubble" class="minicircle">O</button></div>
         </div>
         <div id="purchase" class="box">Purchase</div>
-        <div id="budgetAndFinancialsContainer" class="box flex-container scrollSide">Budget and Finance</div>
+        <div id="budgetAndFinancialsContainer" class="box flex-container scrollSide">
+            <budgetGroup></budgetGroup>
+        </div>
         <div id="budfooter" class="box">Footer</div>
     </div>
 </template>
 
 <script>
+import budgetGroup from '../components/budgetGroup.vue';
 
-    export default {
-        name: 'homeView',
-        components: {
+export default {
+    name: 'homeView',
+    components: {
+        budgetGroup,
+    },
+    data: () => {
+        return {
+            buttonCircle: {
+                background: 'blue',
             },
-        data: () => {
-            return {
-                buttonCircle: {
-                    background: 'blue',
-                },
-                miniOpen: false,
-            };
+            miniOpen: false,
+        };
+    },
+    methods: {
+        openPurchase() {
+            document.getElementById('budgetAndFinancialsContainer').style.zIndex = '10';
+            document.getElementById('purchase').style.zIndex = '15';
         },
-        methods: {
-            openPurchase () {
-                document.getElementById("budgetAndFinancialsContainer").style.zIndex = "10";
-                document.getElementById("purchase").style.zIndex = "15";
-
-            },
-            openBudget() {
-                document.getElementById("purchase").style.zIndex = "10";
-                document.getElementById("budgetAndFinancialsContainer").style.zIndex = "15";
-
-            }
+        openBudget() {
+            document.getElementById('purchase').style.zIndex = '10';
+            document.getElementById('budgetAndFinancialsContainer').style.zIndex = '15';
         },
+    },
     };
 
 </script>
@@ -159,16 +161,6 @@
 </style>
 
 <style>
-
-    span {
-        text-align: center;
-        line-height: 35px;
-        position: absolute;
-        right: 14px;
-        font-weight: bold;
-        color: white;
-        font-size: 1em;
-    }
 
     #statsBubble {
         position: fixed;
