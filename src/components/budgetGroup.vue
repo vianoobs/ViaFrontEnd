@@ -1,32 +1,58 @@
 <template>
     <div class="budgetGroup">
-        <header>{{budgetItemHeading}}</header>
+        <header><input title="CardTitle" type="text" v-bind:placeholder="budgetItemHeading"></header>
+
         <div class="budgetItemContainer">
             <div class="budgetItemRow">
-                <budgetItemRowContent></budgetItemRowContent>
+                <div v-for="(input, _uid) in budgetRows" :key="_uid">
+                <component :is="$options.components.budgetItemRowContent"></component>
+                <progress data-min="0" data-max="100" data-value="20"></progress>
+                </div>
             </div>
-            <progress data-min="0" data-max="100" data-value="20"></progress>
         </div>
-        <budget-item-button></budget-item-button>
+        <footer class="budgetGroupFooter">
+            <div class="budgetGroupFooter-Content budgetGroupFooter-Content--Narrow">
+                <button class="addBudgetItem" id="addBudgetItem" v-on:click="createNewContent()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+                        <path fill="#FD0EBF" d="M3 0v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2z" />
+                    </svg>
+                    Add Item
+                </button>
+            </div>
+        </footer>
     </div>
 </template>
 
 <script>
-import BudgetItemRowContent from '../components/budgetItemRowContent.vue';
+import budgetItemRowContent from '../components/budgetItemRowContent.vue';
 import BudgetItemButton from '../components/budgetItemButton.vue';
 
 export default {
     name: 'budgetGroup',
     components: {
-        BudgetItemRowContent,
+        budgetItemRowContent,
         BudgetItemButton,
     },
     data: () => {
         return {
             budgetItemHeading: 'Housing',
+            budgetRows: [
+                {
+                    inputBudget: '',
+                    amountBudgeted: 0,
+                    remaining: 0,
+                    id: ,
+                },
+            ],
         };
     },
+    methods: {
+        createNewContent() {
+            this.budgetRows.push({ inputBudget: '', amountBudgeted: 0, remaining: 0});
+        },
+    },
 };
+
 </script>
 
 <style scoped>
@@ -57,6 +83,53 @@ export default {
         border: 0;
         vertical-align: baseline;
     }
+
+    header>input {
+        background-color: transparent;
+        border: none;
+        color: red;
+    }
+
+    ::placeholder {
+        color: black;
+        font-size: 1.5em;
+    }
+
+    .budgetGroupFooter {
+        padding: 1.2em;
+        display: flex;
+        flex-wrap: nowrap;
+        align-content: center;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+    }
+
+    .budgetGroupFooter-Content.budgetGroupFooter-Content--Narrow {
+        padding: 0;
+        display: flex;
+        flex: 0 1 33.33%;
+    }
+
+    .addBudgetItem {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 0;
+        border: 0;
+        padding: 0;
+        color: #FD0EBF;
+        background-color: transparent;
+        font-weight: 600;
+        vertical-align: inherit;
+    }
+
+    .addBudgetItem svg {
+        margin-right: .8em;
+        overflow: hidden;
+    }
+
+
 
 
 

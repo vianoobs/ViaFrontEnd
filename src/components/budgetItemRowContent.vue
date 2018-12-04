@@ -1,7 +1,7 @@
 <template>
     <div class="budgetItemRowContent">
 
-        <div class="budgetItemRow-Column ">
+        <div class="budgetItemRow-Column">
             <div class="budgetItemLabel">
                 <input type="text" maxlength="32" placeholder="Label" class="input-Budget-Inline-Small budgetItemRow-Input">
             </div>
@@ -9,16 +9,16 @@
 
         <div class="budgetItemRow-Column">
             <div class="amountBudgetedInputContainer">
-                <input class="amountBudgetedNumber budgetItemRow-Input input-Budget-Inline-Small" type="text" placeholder="$">
+                <input v-on:input="moneyInput = $event.target.value" class="amountBudgetedNumber budgetItemRow-Input input-Budget-Inline-Small" type="text" placeholder="$">
             </div>
         </div>
 
         <div class="budgetItemRow-Column">
             <span class="budgetItemSecondColumnMoney-Spent">
                 <span class="money-symbol">$</span>
-                <span class="money-integer">10</span>
-                <span class="money-decimal">.</span>
-                <span class="money-fractional">04</span>
+                <span class="money-integer">{{ moneyInput }}</span>
+                <!--<span class="money-decimal">.</span>-->
+                <!--<span class="money-fractional">04</span>-->
             </span>
         </div>
     </div>
@@ -27,7 +27,14 @@
 <script>
     export default {
         name: 'budgetItemRowContent',
+
+        data: () => {
+            return {
+                moneyInput: '',
+            };
+        },
     };
+
 </script>
 
 <style scoped>
