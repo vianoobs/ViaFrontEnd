@@ -9,14 +9,14 @@
 
         <div class="budgetItemRow-Column">
             <div class="amountBudgetedInputContainer">
-                <input v-on:input="moneyInput = $event.target.value" class="amountBudgetedNumber budgetItemRow-Input input-Budget-Inline-Small" type="text" placeholder="$">
+                <input v-model.number="amountbudgeted" class="amountBudgetedNumber budgetItemRow-Input input-Budget-Inline-Small" type="text" placeholder="$">
             </div>
         </div>
-
+        <!--v-model.number="amountbudgeted"-->
         <div class="budgetItemRow-Column">
             <span class="budgetItemSecondColumnMoney-Spent">
                 <span class="money-symbol">$</span>
-                <span class="money-integer">{{ moneyInput }}</span>
+                <span class="money-integer">{{}}</span>
                 <!--<span class="money-decimal">.</span>-->
                 <!--<span class="money-fractional">04</span>-->
             </span>
@@ -27,7 +27,18 @@
 <script>
     export default {
         name: 'budgetItemRowContent',
+        props: ['inputbudget', 'amountbudgeted', 'remaining', 'id'],
+        watch: {
+            amountbud(newValue) {
 
+            }
+        },
+        methods: {
+            // budgetUpdating: () => {
+            //     this.$emit ();
+            //     console.log("Hi");
+            // },
+        },
         data: () => {
             return {
                 moneyInput: '',

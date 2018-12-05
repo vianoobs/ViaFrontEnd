@@ -5,7 +5,7 @@
         <div class="budgetItemContainer">
             <div class="budgetItemRow">
                 <div v-for="(input, index) in budgetRows" :key="index">
-                <component :is="$options.components.budgetItemRowContent"></component>
+                <component :is="$options.components.budgetItemRowContent" v-bind="budgetRows"></component>
                 <progress data-min="0" data-max="100" data-value="20"></progress>
                 </div>
             </div>
@@ -45,8 +45,8 @@ export default {
             budgetItemHeading: 'Housing',
             budgetRows: [
                 {
-                    inputBudget: '',
-                    amountBudgeted: 0,
+                    inputbudget: '',
+                    amountbudgeted: 0,
                     remaining: 0,
                     id: uniqId(),
                 },
@@ -55,7 +55,7 @@ export default {
     },
     methods: {
         createNewContent() {
-            this.budgetRows.push({inputBudget: '', amountBudgeted: 0, remaining: 0, id: uniqId() });
+            this.budgetRows.push({inputbudget: '', amountbudgeted: 0, remaining: 0, id: uniqId() });
         },
     },
 };
