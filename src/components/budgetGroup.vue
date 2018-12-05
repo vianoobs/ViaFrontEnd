@@ -4,7 +4,7 @@
 
         <div class="budgetItemContainer">
             <div class="budgetItemRow">
-                <div v-for="(input, _uid) in budgetRows" :key="_uid">
+                <div v-for="(input, index) in budgetRows" :key="index">
                 <component :is="$options.components.budgetItemRowContent"></component>
                 <progress data-min="0" data-max="100" data-value="20"></progress>
                 </div>
@@ -27,6 +27,13 @@
 import budgetItemRowContent from '../components/budgetItemRowContent.vue';
 import BudgetItemButton from '../components/budgetItemButton.vue';
 
+const uniqId = () => {
+    const timestamp = (new Date().getTime() / 1000 | 0).toString(16);
+    return timestamp + 'xxxxxxxxxxxxxxxx'.replace(/[x]/g, () => {
+        return (Math.random() * 16 | 0).toString(16);
+    }).toLowerCase();
+};
+
 export default {
     name: 'budgetGroup',
     components: {
@@ -41,14 +48,14 @@ export default {
                     inputBudget: '',
                     amountBudgeted: 0,
                     remaining: 0,
-                    id: ,
+                    id: uniqId(),
                 },
             ],
         };
     },
     methods: {
         createNewContent() {
-            this.budgetRows.push({ inputBudget: '', amountBudgeted: 0, remaining: 0});
+            this.budgetRows.push({inputBudget: '', amountBudgeted: 0, remaining: 0, id: uniqId() });
         },
     },
 };
