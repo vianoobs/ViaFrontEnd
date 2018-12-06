@@ -7,16 +7,16 @@
             </div>
         </div>
 
+        <!--input that will hopefully update amoundbudgeted in parent object-->
         <div class="budgetItemRow-Column">
             <div class="amountBudgetedInputContainer">
-                <input v-model.number="amountbudgeted" class="amountBudgetedNumber budgetItemRow-Input input-Budget-Inline-Small" type="text" placeholder="$">
+                <input v-model.number="amount" class="amountBudgetedNumber budgetItemRow-Input input-Budget-Inline-Small" type="text" placeholder="$">
             </div>
         </div>
-        <!--v-model.number="amountbudgeted"-->
         <div class="budgetItemRow-Column">
             <span class="budgetItemSecondColumnMoney-Spent">
                 <span class="money-symbol">$</span>
-                <span class="money-integer">{{}}</span>
+                <span class="money-integer"></span>
                 <!--<span class="money-decimal">.</span>-->
                 <!--<span class="money-fractional">04</span>-->
             </span>
@@ -26,11 +26,18 @@
 
 <script>
     export default {
-        name: 'budgetItemRowContent',
-        props: ['inputbudget', 'amountbudgeted', 'remaining', 'id'],
-        watch: {
-            amountbud(newValue) {
-
+        props: ['value'],
+        data(){
+            return {
+                amount: null,
+            }
+        },
+        created() {
+            this.amount = this.value;
+        },
+        watch:{
+            amount(newVal) {
+                this.$emit('value', newVal);
             }
         },
         methods: {
@@ -38,11 +45,6 @@
             //     this.$emit ();
             //     console.log("Hi");
             // },
-        },
-        data: () => {
-            return {
-                moneyInput: '',
-            };
         },
     };
 

@@ -4,8 +4,11 @@
 
         <div class="budgetItemContainer">
             <div class="budgetItemRow">
+                <!--component being created via button click-->
                 <div v-for="(input, index) in budgetRows" :key="index">
-                <component :is="$options.components.budgetItemRowContent" v-bind="budgetRows"></component>
+
+                <!--<component :is="$options.components.budgetItemRowContent" v-bind="budgetRows"></component>-->
+                    <budgetItemRowContent v-model="budgetRows[index].amountbudgeted"></budgetItemRowContent>
                 <progress data-min="0" data-max="100" data-value="20"></progress>
                 </div>
             </div>
@@ -54,6 +57,7 @@ export default {
         };
     },
     methods: {
+        //creates new budgetRow when button is clicked
         createNewContent() {
             this.budgetRows.push({inputbudget: '', amountbudgeted: 0, remaining: 0, id: uniqId() });
         },
