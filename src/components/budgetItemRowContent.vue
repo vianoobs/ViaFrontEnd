@@ -10,7 +10,7 @@
         <!--input that will hopefully update amoundbudgeted in parent object-->
         <div class="budgetItemRow-Column">
             <div class="amountBudgetedInputContainer">
-                <input v-model.number="amount" class="amountBudgetedNumber budgetItemRow-Input input-Budget-Inline-Small" type="text" placeholder="$">
+                <input v-model.number="amount" class="amountBudgetedNumber budgetItemRow-Input input-Budget-Inline-Small" type="number" placeholder="$">
             </div>
         </div>
         <div class="budgetItemRow-Column">
@@ -27,24 +27,16 @@
 <script>
     export default {
         props: ['value'],
-        data(){
-            return {
-                amount: null,
-            }
-        },
-        created() {
-            this.amount = this.value;
-        },
-        watch:{
-            amount(newVal) {
-                this.$emit('value', newVal);
-            }
-        },
-        methods: {
-            // budgetUpdating: () => {
-            //     this.$emit ();
-            //     console.log("Hi");
-            // },
+        computed: {
+            amount: {
+                set(newVal) {
+
+                    this.$emit('input', newVal);
+                },
+                get() {
+                    return this.value;
+                },
+            },
         },
     };
 
