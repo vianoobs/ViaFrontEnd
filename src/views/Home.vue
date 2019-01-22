@@ -1,18 +1,37 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+    <div>
+        <div class="home-container">
+            <div class="logo-container">
+                <InitialsCanvasAnimation></InitialsCanvasAnimation>
+            </div>
+
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+    import {Component, Vue} from "vue-property-decorator";
+    import InitialsCanvasAnimation from "@/components/InitialsCanvasAnimation.vue"; // @ is an alias to /src
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
-export default class Home extends Vue {}
+    @Component({
+        components: {
+            InitialsCanvasAnimation,
+        },
+    })
+    export default class Home extends Vue {
+    }
 </script>
+
+<style>
+    .home-container {
+        width: 100%;
+        height: 100%;
+    }
+    .logo-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
