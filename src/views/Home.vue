@@ -24,9 +24,15 @@
 
 <style>
     .home-container {
+        background: linear-gradient(
+                rgba(0, 0, 0, 0.45),
+                rgba(0, 0, 0, 0.9)
+        ),
+        url("../assets/prism.png") repeat;
         width: 100%;
         height: 100%;
     }
+
     .logo-container {
         width: 100%;
         height: 100%;
