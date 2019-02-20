@@ -1,21 +1,18 @@
 <template>
     <div>
         <div class="home-container">
-            <div class="logo-container">
-                <InitialsCanvasAnimation></InitialsCanvasAnimation>
-            </div>
-
+            This is the home page
+            <basket-display></basket-display>
         </div>
     </div>
 </template>
 
 <script lang="ts">
     import {Component, Vue} from "vue-property-decorator";
-    import InitialsCanvasAnimation from "@/components/InitialsCanvasAnimation.vue"; // @ is an alias to /src
-
+    import BasketDisplay from "@/components/BasketDisplay.vue";
     @Component({
         components: {
-            InitialsCanvasAnimation,
+            BasketDisplay
         },
     })
     export default class Home extends Vue {
@@ -24,20 +21,7 @@
 
 <style>
     .home-container {
-        background: linear-gradient(
-                rgba(0, 0, 0, 0.45),
-                rgba(0, 0, 0, 0.9)
-        ),
-        url("../assets/prism.png") repeat;
         width: 100%;
         height: 100%;
-    }
-
-    .logo-container {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 </style>

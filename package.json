@@ -9,8 +9,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.2.0",
-    "@types/fabric": "^1.5.47",
-    "fabric": "^2.6.0",
+    "axios": "^0.18.0",
     "register-service-worker": "^1.5.2",
     "roboto-fontface": "*",
     "vue": "^2.5.17",
@@ -31,6 +30,7 @@
     "typescript": "^3.0.0",
     "vue-cli-plugin-vuetify": "^0.4.6",
     "vue-template-compiler": "^2.5.17",
-    "vuetify-loader": "^1.0.5"
+    "vuetify-loader": "^1.0.5",
+    "vuex-typex": "^3.1.4"
   }
 }
