@@ -22,6 +22,9 @@
                         <v-layout row justify-space-around><div>
                             <h4><a>Petes Awesome Restuarant</a></h4>
                             <div>Address: 2019 Land St</div>
+                            <hr>
+                            <div>Estimated Total Time</div>
+                            <div>15 Min</div>
                         </div><div>
                             <div>Rating: ***** </div>
                             <div>Distance: 12.2miles </div>
@@ -36,6 +39,26 @@
                         <v-layout row justify-space-around><div>
                             <h4><a>Petes Awesome Restuarant</a></h4>
                             <div>Address: 2019 Land St</div>
+                            <hr>
+                            <div>Estimated Total Time</div>
+                            <div>1 Hr 2 Min</div>
+                        </div><div>
+                            <div>Rating: ***** </div>
+                            <div>Distance: 12.2miles </div>
+                            <div>PRICE: {$, $$, $$$, $$$$} </div>
+                        </div>
+                        </v-layout>
+                    </v-card-title>
+                </v-card>
+                <v-card>
+                    <v-img :src="require('../assets/logo.png')" aspect-ratio="4"></v-img>
+                    <v-card-title>
+                        <v-layout row justify-space-around><div>
+                            <h4><a>Petes Awesome Restuarant</a></h4>
+                            <div>Address: 2019 Land St</div>
+                            <hr>
+                            <div>Estimated Total Time</div>
+                            <div>25 Min</div>
                         </div><div>
                             <div>Rating: ***** </div>
                             <div>Distance: 12.2miles </div>

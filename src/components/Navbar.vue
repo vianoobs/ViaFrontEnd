@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar dark app>
+    <v-toolbar app class="red accent-4">
         <v-toolbar-title class="headline text-uppercase">
             <span>VIA</span>
         </v-toolbar-title>
@@ -21,7 +21,5 @@
 </script>
 
 <style>
-    .navbar {
-        background-color: darkred;
-    }
+
 </style>

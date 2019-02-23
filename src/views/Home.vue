@@ -29,4 +29,8 @@
         min-width: 100%!important;
     }
 
+    .container {
+        background-color:#343a40;
+    }
+
 </style>
