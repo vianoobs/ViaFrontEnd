@@ -1,16 +1,10 @@
 <template>
     <div>
-        <v-container grid-list-xl fill-height>
-            <v-layout column child-flex>
-                <router-link :to="{name: 'about'}">
-                    <v-btn color="error" fill-height>Find Food</v-btn>
-                </router-link>
-                <router-link :to="{name: 'about'}">
-                    <v-btn color="error">Find Drink</v-btn>
-                </router-link>
-                <router-link :to="{name: 'about'}">
-                    <v-btn color="error">Find Attraction</v-btn>
-                </router-link>
+        <v-container grid-list-xl>
+            <v-layout column align-center fill-height>
+                <v-btn color="error" large :to="{name: 'about'}">Find Food</v-btn>
+                <v-btn color="error" large :to="{name: 'about'}" >Find Drinks</v-btn>
+                <v-btn color="error" large :to="{name: 'about'}" >Find Attractions</v-btn>
             </v-layout>
         </v-container>
     </div>
@@ -30,5 +24,9 @@
 </script>
 
 <style>
+
+    a {
+        min-width: 100%!important;
+    }
 
 </style>
