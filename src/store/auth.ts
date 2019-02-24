@@ -4,6 +4,10 @@ import inventory, {Product} from "@/store/inventory";
 import {RootState} from "@/store/store";
 import axios from "axios"
 
+export enum SocialLogin {
+    FACEBOOK, GOOGLE
+}
+
 export interface AuthState {
     user: any,
     isLoading: boolean
@@ -41,11 +45,6 @@ async function login(context: BareActionContext<AuthState, RootState>) {
     }
 }
 
-async function startLogin(context: BareActionContext<AuthState, RootState>) {
-    console.log('start login');
-    auth.commitSetIsLoading({isLoading: true});
-}
-
 async function logout(context: BareActionContext<AuthState, RootState>) {
     console.log('logout');
     auth.commitSetUser({user: null});
@@ -72,7 +71,6 @@ const auth = {
 
     // actions
     login: b.dispatch(login),
-    startLogin: b.dispatch(startLogin),
     logout: b.dispatch((logout))
 };
 
