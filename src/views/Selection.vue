@@ -8,7 +8,6 @@
 
 <script lang="ts">
     import {Component, Vue} from "vue-property-decorator";
-    import BasketDisplay from "@/components/Result.vue";
     import Search from "@/components/Search.vue";
 
     @Component({

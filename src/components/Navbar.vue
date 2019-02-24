@@ -1,6 +1,6 @@
 <template>
     <v-toolbar app class="red accent-4">
-        <v-toolbar-title class="headline text-uppercase">
+        <v-toolbar-title class="headline text-uppercase via-logo">
             <v-btn flat :to="{name: 'home'}">
                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 504 360" style="enable-background:new 0 0 504 360;" xml:space="preserve">
                     <g>
@@ -16,6 +16,9 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-title>
+            <Login></Login>
+        </v-toolbar-title>
+        <v-toolbar-title>
             <span><Weather></Weather></span>
         </v-toolbar-title>
     </v-toolbar>
@@ -25,9 +28,10 @@
     import Vue from "vue";
     import Component from "vue-class-component";
     import Weather from "@/components/Weather.vue";
+    import Login from "@/components/Login.vue";
 
     @Component({
-        components: {Weather}
+        components: {Login, Weather}
     })
     export default class Navbar extends Vue {
 
@@ -42,5 +46,9 @@
     svg {
         height: 42px;
         width: 100px;
+    }
+
+    .via-logo .theme--light.v-btn {
+        color: transparent !important;
     }
 </style>
