@@ -6,8 +6,8 @@
                 <v-title class="display-2 white--text">Results For {{type}} Closest To You</v-title>
                 <v-layout row wrap>
                     <v-select v-on:change="hello" v-if="this.$route.query.type === 'Food'" :items="food" dark color="red accent-4" class="py-1 ml-3" label="Categories"></v-select>
-                    <v-select v-if="this.$route.query.type === 'Drinks'" :items="drink" dark color="red accent-4" class="py-1 ml-3" label="Categories"></v-select>
-                    <v-select v-if="this.$route.query.type === 'Attractions'" :items="attraction" dark color="red accent-4" class="py-1 ml-3" label="Categories"></v-select>
+                    <v-select  v-on:change="hello" v-if="this.$route.query.type === 'Drinks'" :items="drink" dark color="red accent-4" class="py-1 ml-3" label="Categories"></v-select>
+                    <v-select  v-on:change="hello" v-if="this.$route.query.type === 'Attractions'" :items="attraction" dark color="red accent-4" class="py-1 ml-3" label="Categories"></v-select>
                     <v-flex xs12 sm6 class="py-2">
                         <v-btn-toggle exclusive class="m-0">
                             <v-btn v-on:click="sort(1)" flat class="py-1"><v-icon>$</v-icon></v-btn>
@@ -120,7 +120,8 @@
                 .post<string>('http://localhost:8081/api/yelp', {
                         lat:this.$route.query.lat,
                         long:this.$route.query.long,
-                        term: this.$route.query.type
+                        term: this.$route.query.type,
+                        radius: '8000'
                 })
                 .then(response => {
                    this.info = response.data
