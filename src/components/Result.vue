@@ -106,7 +106,4 @@
     }
 </style>
 
-<style>
-
-</style>
 
