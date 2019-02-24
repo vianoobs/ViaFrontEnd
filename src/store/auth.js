@@ -45,6 +45,15 @@ function login(context) {
         });
     });
 }
+function startLogin(context) {
+    return tslib_1.__awaiter(this, void 0, void 0, function () {
+        return tslib_1.__generator(this, function (_a) {
+            console.log('start login');
+            auth.commitSetIsLoading({ isLoading: true });
+            return [2 /*return*/];
+        });
+    });
+}
 function logout(context) {
     return tslib_1.__awaiter(this, void 0, void 0, function () {
         return tslib_1.__generator(this, function (_a) {
@@ -71,6 +80,7 @@ var auth = {
     commitSetIsLoading: b.commit(setIsLoading),
     // actions
     login: b.dispatch(login),
+    startLogin: b.dispatch(startLogin),
     logout: b.dispatch((logout))
 };
 export default auth;

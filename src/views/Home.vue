@@ -57,7 +57,7 @@
     @import url('https://fonts.googleapis.com/css?family=Montserrat:300');
 
     .v-btn {
-        height: 25%;
+        height: 20%;
     }
 
     .router-view {
