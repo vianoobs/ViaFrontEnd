@@ -142,4 +142,8 @@
         height: 36px;
         width: 79px;
     }
+
+    .theme--light.v-card {
+        margin-bottom: 1em;
+    }
 </style>

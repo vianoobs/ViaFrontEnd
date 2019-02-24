@@ -19,8 +19,8 @@
                                  </div>
                              </v-layout>
                          </v-card-title>
-                         <v-container v-for="(transit, key) in info[0].steps" fill-height fluid class="red accent-4">
-                             <v-container fill-height fluid class="white">
+                         <v-container v-for="(transit, key) in info[0].steps" fill-height fluid class="red accent-4 resultP">
+                             <v-container fill-height fluid class="white resultBorder">
                                  <v-layout>
                                      <v-icon v-if="travelPic(transit.travel_mode) === 1" color="red accent-4">fas fa-bus</v-icon>
                                      <v-icon v-if="travelPic(transit.travel_mode) === 2" color="red accent-4">fas fa-walking</v-icon>
@@ -38,7 +38,7 @@
                          </v-container>
                          <v-container fill-height fluid class="red accent-4">
                              <v-layout align-center justify-center>
-                                 <a v-bind:href="url" target="_blank"><v-btn large color="white">Start Adventure</v-btn></a>
+                                 <a v-bind:href="url" v-bind:style="{textDecoration: 'none'}" target="_blank"><v-btn large color="white">Start Adventure</v-btn></a>
                              </v-layout>
                          </v-container>
                      </v-card>
@@ -101,8 +101,15 @@
         max-height: 50px;
     }
     .layout > a > button {
-        width: 60%;
+        width: 100%;
         min-height: 3em;
+    }
+    .resultP{
+        padding: 1em 2em;
+    }
+    .resultBorder{
+        box-shadow: 1px 3px 7px 0px #333a41;
+        border-radius: .5em;
     }
 </style>
 
