@@ -17,6 +17,7 @@
         },
     })
     export default class Selection extends Vue {
+
     }
 </script>
 
