@@ -1,8 +1,6 @@
-// path: store/inventory/inventory.ts (module)
 
 import { getStoreBuilder } from "vuex-typex"
 import {RootState} from "@/store/store";
-
 
 export interface InventoryState { productsById: { [productId: string]: Product } }
 export interface Product { id: string, name: string }
