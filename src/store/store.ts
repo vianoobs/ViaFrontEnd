@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex, { Store } from 'vuex'
 import {getStoreBuilder} from "vuex-typex";
 import {InventoryState} from "@/store/inventory";
+
 import {AuthState} from "@/store/auth";
 
 export interface RootState
