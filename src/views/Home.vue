@@ -1,10 +1,10 @@
 <template>
     <div>
-        <v-container grid-list-xl>
-            <v-layout column align-center fill-height>
-                <v-btn color="error" large :to="{name: 'about'}">Find Food</v-btn>
-                <v-btn color="error" large :to="{name: 'about'}" >Find Drinks</v-btn>
-                <v-btn color="error" large :to="{name: 'about'}" >Find Attractions</v-btn>
+        <v-container grid-list-xl fill-height>
+            <v-layout column align-center justify-center>
+                <v-btn color="error" large v-on:click="locate(food)">Find Food</v-btn>
+                <v-btn color="error" large v-on:click="locate(drink)">Find Drinks</v-btn>
+                <v-btn color="error" large v-on:click="locate(attraction)">Find Attractions</v-btn>
             </v-layout>
         </v-container>
     </div>
@@ -12,25 +12,54 @@
 
 <script lang="ts">
     import {Component, Vue} from "vue-property-decorator";
-    import BasketDisplay from "@/components/BasketDisplay.vue";
+    import router from "../router";
 
-    @Component({
-        components: {
-            BasketDisplay
-        },
-    })
+    @Component({})
     export default class Home extends Vue {
+        food = "Food";
+        drink = "Drinks";
+        attraction = "Attractions";
+        lat = "";
+        long = "";
+        type = "type";
+        //methods
+        locate (type) {
+            this.type = type;
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(this.showPosition);
+            }
+        }
+
+        showPosition(position) {
+            this.lat = position.coords.latitude;
+            this.long = position.coords.longitude;
+            console.log(this.type)
+            console.log(this.lat);
+            console.log(this.long);
+            router.push({path: 'selection', query:{type: this.type, lat: this.lat, long: this.long}})
+        }
+
+        //mount
+        mounted(){
+        }
     }
 </script>
 
 <style>
 
-    a {
-        min-width: 100%!important;
+
+    .v-btn {
+        height: 25%;
     }
 
-    .container {
+    .router-view {
         background-color:#343a40;
     }
 
+</style>
+
+<style scoped>
+    button {
+        min-width: 100%!important;
+    }
 </style>

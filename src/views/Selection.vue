@@ -8,16 +8,16 @@
 
 <script lang="ts">
     import {Component, Vue} from "vue-property-decorator";
-    import BasketDisplay from "@/components/BasketDisplay.vue";
+    import BasketDisplay from "@/components/Result.vue";
     import Search from "@/components/Search.vue";
 
     @Component({
         components: {
-            BasketDisplay,
             Search
         },
     })
-    export default class About extends Vue {
+    export default class Selection extends Vue {
+
     }
 </script>
 

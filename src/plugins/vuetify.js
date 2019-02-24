@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
 import 'vuetify/src/stylus/app.styl';
-
 Vue.use(Vuetify, {
     theme: {
         primary: '#d50000',
@@ -15,3 +14,4 @@ Vue.use(Vuetify, {
     customProperties: true,
     iconfont: 'fa',
 });
+//# sourceMappingURL=vuetify.js.map
