@@ -12,14 +12,9 @@
 
 <script lang="ts">
     import {Component, Vue} from "vue-property-decorator";
-    import BasketDisplay from "@/components/BasketDisplay.vue";
     import router from "../router";
 
-    @Component({
-        components: {
-            BasketDisplay
-        },
-    })
+    @Component({})
     export default class Home extends Vue {
         food = "Food";
         drink = "Drinks";
@@ -41,7 +36,7 @@
             console.log(this.type)
             console.log(this.lat);
             console.log(this.long);
-            router.push({path: 'about', query:{type: this.type, lat: this.lat, long: this.long}})
+            router.push({path: 'selection', query:{type: this.type, lat: this.lat, long: this.long}})
         }
 
         //mount
