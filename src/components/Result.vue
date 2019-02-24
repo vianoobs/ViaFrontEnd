@@ -19,15 +19,15 @@
                                  </div>
                              </v-layout>
                          </v-card-title>
-                         <v-container v-for="(transit, key) in info[0].steps" fill-height fluid class="red accent-4">
-                             <v-container fill-height fluid class="white">
+                         <v-container v-for="(transit, key) in info[0].steps" fill-height fluid class="red accent-4 resultP">
+                             <v-container fill-height fluid class="white resultBorder">
                                  <v-layout>
                                      <v-icon v-if="travelPic(transit.travel_mode) === 1" color="red accent-4">fas fa-bus</v-icon>
                                      <v-icon v-if="travelPic(transit.travel_mode) === 2" color="red accent-4">fas fa-walking</v-icon>
                                      <v-title class="px-2">{{transit.travel_mode}}</v-title>
                                      <v-chip v-if="travelPic(transit.travel_mode) === 1" v-bind:style="{backgroundColor: transit.transit_details.line.color, borderRadius: '.7em'}" class="viaBus">{{transit.transit_details.line.short_name}}</v-chip>
                                      <v-layout v-if="travelPic(transit.travel_mode) === 1" column class="px-3">
-                                        <v-title v-if="travelPic(transit.travel_mode) === 1"> Bus Arrival Time: {{transit.transit_details.arrival_time.text}}</v-title>
+                                        <v-title v-if="travelPic(transit.travel_mode) === 1"> Bus Arrival Time: {{transit.transit_details.departure_time.text}}</v-title>
                                         <v-title>{{transit.html_instructions.split(',')[0]}}</v-title>
                                      </v-layout>
                                      <v-title v-if="travelPic(transit.travel_mode) === 2" >{{transit.html_instructions.split(',')[0]}}</v-title>
@@ -38,7 +38,7 @@
                          </v-container>
                          <v-container fill-height fluid class="red accent-4">
                              <v-layout align-center justify-center>
-                                 <a v-bind:href="url"><v-btn large color="white">Start Adventure</v-btn></a>
+                                 <a v-bind:href="url" v-bind:style="{textDecoration: 'none'}" target="_blank"><v-btn large color="white">Start Adventure</v-btn></a>
                              </v-layout>
                          </v-container>
                      </v-card>
@@ -101,8 +101,15 @@
         max-height: 50px;
     }
     .layout > a > button {
-        width: 60%;
+        width: 100%;
         min-height: 3em;
+    }
+    .resultP{
+        padding: 1em 2em;
+    }
+    .resultBorder{
+        box-shadow: 1px 3px 7px 0px #333a41;
+        border-radius: .5em;
     }
 </style>
 

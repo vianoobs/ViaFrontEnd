@@ -145,9 +145,10 @@
         mounted() {
             axios
                 .post<string>('http://localhost:8081/api/yelp', {
-                    lat: this.$route.query.lat,
-                    long: this.$route.query.long,
-                    term: this.$route.query.type
+                        lat:this.$route.query.lat,
+                        long:this.$route.query.long,
+                        term: this.$route.query.type,
+                        radius: '8000'
                 })
                 .then(response => {
                     this.info = response.data
