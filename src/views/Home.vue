@@ -61,7 +61,7 @@
     }
 
     .router-view {
-        background: url("../assets/tactile_noise.png") repeat;
+        background: url("../assets/outlets.png") repeat;
     // background-color: #343a40;
     }
 
