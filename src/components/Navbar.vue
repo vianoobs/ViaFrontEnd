@@ -16,7 +16,7 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-title>
-            <span>Weather</span>
+            <span><Weather></Weather></span>
         </v-toolbar-title>
     </v-toolbar>
 </template>
@@ -24,8 +24,11 @@
 <script lang="ts">
     import Vue from "vue";
     import Component from "vue-class-component";
+    import Weather from "@/components/Weather.vue";
 
-    @Component({})
+    @Component({
+        components: {Weather}
+    })
     export default class Navbar extends Vue {
 
     }

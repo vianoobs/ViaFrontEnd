@@ -103,7 +103,7 @@
                     term:e
                 })
                 .then(response => {
-                    this.info = response.data
+                    this.info = response.data;
                     console.log(response.data)
                 })
         }
