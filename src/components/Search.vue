@@ -22,8 +22,7 @@
                         <v-img :src="resultCard.image_url" aspect-ratio="5"></v-img>
                         <v-card-title>
                             <v-layout row justify-space-around><div>
-                                <h4><a>{{resultCard.name}}</a></h4>
-                                <hr>
+                                <v-title class="headline"><a v-bind:href="resultCard.url" target="_blank">{{resultCard.name}}</a></v-title>
                                 <div>Estimated Time</div>
                                 <div>{{Math.round(((resultCard.distance * 0.000621371) * 20))}} Min</div>
                             </div><div>
@@ -35,7 +34,7 @@
                         </v-card-title>
                         <v-container fill-height fluid class="red accent-4">
                             <v-layout align-center justify-center>
-                                    <v-btn large color="white accent-2" v-on:click="result(resultCard)">
+                                    <v-btn large color="white" v-on:click="result(resultCard)">
                                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 504 360" style="enable-background:new 0 0 504 360;" xml:space="preserve">
                                             <g>
                     	                        <polygon class="st0" points="0,44.9 47.8,44.9 46.1,138.1 105.6,44.9 150.8,44.9 58.4,184.3 5.7,184.3  "/>
@@ -112,7 +111,8 @@
             console.log(this.type);
             console.log(this.lat);
             console.log(this.long);
-            router.push({path: 'routepreview', query:{type: this.type, lat: this.lat, long: this.long}, params:{e}})
+            console.log(e)
+            router.push({name: 'routepreview', params:{card: e}, query:{type: this.type, lat: this.lat, long: this.long}})
         }
 
         mounted() {

@@ -22,9 +22,9 @@ export default new Router({
             component: function () { return import(/* webpackChunkName: "about" */ './views/Selection.vue'); },
         },
         {
-            path: '/routepreview',
+            path: '/routepreview/:card',
             name: 'routepreview',
-            component: function () { return import('./views/RoutePreview.vue'); }
+            component: function () { return import('./views/RoutePreview.vue'); },
         },
     ],
 });

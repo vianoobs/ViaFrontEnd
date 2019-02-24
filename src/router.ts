@@ -24,9 +24,9 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/Selection.vue'),
     },
     {
-     path: '/routepreview',
+     path: '/routepreview/:card',
      name: 'routepreview',
-     component: () => import('./views/RoutePreview.vue')
+     component: () => import('./views/RoutePreview.vue'),
     },
   ],
 });
