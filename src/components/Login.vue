@@ -1,11 +1,12 @@
 <template>
     <div class="text-xs-center">
+        <v-btn v-if="user" slot="activator" color="white" flat :disabled="value" class="login-button">
+            <span v-on:click="logout()">Logout</span>
+        </v-btn>
         <!--persistent="true"-->
         <v-dialog v-model="value" width="500" :dark="true">
-            <v-btn slot="activator" color="white" flat :disabled="value" class="login-button">
-                <span v-if="user === '' && value">...</span>
-                <span v-if="user === '' && !value">Login</span>
-                <span v-if="user" v-on:click="logout()">Logout</span>
+            <v-btn v-if="user === '' && !value" slot="activator" color="white" flat :disabled="value" class="login-button">
+                <span >Login</span>
             </v-btn>
 
             <v-card>
@@ -52,6 +53,7 @@
         methods: {
             logout(){
                 console.log("logged out");
+                console.log(this.value)
                 store.commit('logoutUser', '');
             }
         },
@@ -63,6 +65,7 @@
 
             user() {
                 console.log(store.state.user)
+                console.log(this.value)
                 return store.state.user
             }
         },

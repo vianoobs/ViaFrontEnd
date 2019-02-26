@@ -23,10 +23,13 @@
     import { store } from '../store/store';
 
     export default {
+
         name: 'budgetGroup',
         components: {
             store
         },
+
+        //data
         data: () => {
             return {
                 food: "Food",
@@ -38,6 +41,7 @@
             }
         },
 
+        //computed properties
         computed: {
 
             user: {
@@ -70,13 +74,11 @@
                 router.push({path: 'selection', query: {type: this.type, lat: this.lat, long: this.long}})
             }
         },
+
         //mount
         mounted() {
             axios
                 .get('/api/user', { withCredentials: true }).then(res => {
-                console.log(res.data);
-                // store.commitSetUser(res.data);
-                console.log(store.state);
                 store.commit('changeUser', res.data);
             });
         }

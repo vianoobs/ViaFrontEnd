@@ -38,7 +38,7 @@
                         </v-container>
                         <v-container fill-height fluid class="red accent-4">
                             <v-layout align-center justify-center>
-                                <a v-bind:href="url" v-bind:style="{textDecoration: 'none'}" target="_blank"><v-btn large color="white">Start Adventure</v-btn></a>
+                                <v-btn v-on:click="url" v-bind:style="{textDecoration: 'none'}" target="_blank">Start Adventure</v-btn>
                             </v-layout>
                         </v-container>
                     </v-card>
@@ -51,8 +51,12 @@
 <script>
     import axios, {AxiosResponse} from "axios";
     import router from "../router";
+    import { store } from '../store/store';
 
     export default {
+        components:{
+            store
+        },
 
         //data
         data () {
@@ -63,20 +67,8 @@
 
         computed: {
             parames(){
+                console.log(this.$route.params.card)
                 return this.$route.params.card
-            },
-
-           url(){
-                let url ="";
-                if( (navigator.platform.indexOf("iPhone") != -1)
-                    || (navigator.platform.indexOf("iPod") != -1)
-                    || (navigator.platform.indexOf("iPad") != -1))
-                    url = "comgooglemaps://?daddr=" + this.info[0].end_address.split(" ").join("+") + "&directionsmode=transit";
-                else {
-                    url = "https://www.google.com/maps/dir/?api=1&destination=" + this.info[0].end_address.split(",").join("%2C").split(" ").join("+") + "&travelmode=transit&dir_action=navigate";
-                    console.log(url)
-                }
-                return url
             }
         },
 
@@ -101,6 +93,43 @@
                 }else if (e === 'WALKING'){
                     return 2
                 }
+            },
+
+            url(){
+
+                if (store.state.user != '') {
+                    console.log(store.state.user)
+                    axios
+                        .post('http://localhost:8081/api/save-search', {
+                            owner: store.state.user.userId,
+                            name: this.$route.params.card.name,
+                            address: this.info[0].end_address
+                        }).then(res => {
+                        console.log(res.data)
+                    });
+
+                    axios
+                        .post('http://localhost:8081/api/show-search', {
+                            owner: store.state.user.userId
+                        }).then(res => {
+                            console.log(res.data)
+                    });
+                }
+
+                let url ="";
+                if( (navigator.platform.indexOf("iPhone") != -1)
+                    || (navigator.platform.indexOf("iPod") != -1)
+                    || (navigator.platform.indexOf("iPad") != -1))
+                    url = "comgooglemaps://?daddr=" + this.info[0].end_address.split(" ").join("+") + "&directionsmode=transit";
+                else {
+                    url = "https://www.google.com/maps/dir/?api=1&destination=" + this.info[0].end_address.split(",").join("%2C").split(" ").join("+") + "&travelmode=transit&dir_action=navigate";
+                    window.open(
+                        url,
+                        '_blank' // <- This is what makes it open in a new window.
+                    );
+
+                }
+                return url
             }
         }
 
