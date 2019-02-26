@@ -1,20 +1,26 @@
 <template>
-    <div class="home-container">
-        <div class="title">VIA QUICK TRIPS</div>
+    <v-container>
+        <v-layout column align-center fill-height>
+        <v-title color:="white" class="display-3 white--text">VIA QUICK TRIPS</v-title>
+            <v-progress-circular v-if="loading"
+                    :size="200" :width="20"
+                    color="#42b883" indeterminate
+            ></v-progress-circular>
         <v-container grid-list-xl fill-height>
             <v-layout column align-center justify-center>
                 <v-btn color="red accent-4" class="home-button" large v-on:click="locate(food)">
-                    <div class="button-text">Find Food</div>
-                    <span class="icon-wrapper"><v-icon class="fa">fas fa-utensils</v-icon></span></v-btn>
+                    <v-title class="button-text">Find Food</v-title>
+                    <v-icon class="fa">fas fa-utensils</v-icon></v-btn>
                 <v-btn color="red accent-4" class="home-button" large v-on:click="locate(drink)">
                     <div class="button-text">Find Drinks</div>
-                    <span class="icon-wrapper"><v-icon class="fa">fas fa-coffee</v-icon></span></v-btn>
+                    <v-icon class="fa">fas fa-coffee</v-icon></v-btn>
                 <v-btn color="red accent-4" class="home-button" large v-on:click="locate(attraction)">
                     <div class="button-text">Find Attractions</div>
-                    <span class="icon-wrapper"><v-icon class="fa">fas fa-map-marked-alt</v-icon></span></v-btn>
+                    <v-icon class="fa">fas fa-map-marked-alt</v-icon></v-btn>
             </v-layout>
         </v-container>
-    </div>
+        </v-layout>
+    </v-container>
 </template>
 
 <script>
@@ -32,6 +38,8 @@
         //data
         data: () => {
             return {
+                loader: null,
+                loading: false,
                 food: "Food",
                 drink :"Drinks",
                 attraction : "Attractions",
@@ -57,8 +65,8 @@
 
         //methods
         methods: {
-
             locate(type) {
+                this.loading = true;
                 this.type = type;
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(this.showPosition);
@@ -96,32 +104,9 @@
         background-color: #343a40;
     }
 
-    .home-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-
-    }
-
-    .title {
-        display: flex;
-        align-items: flex-end;
-        font-size: 4em !important;
-        text-align: center;
-        padding: 2em 0 0 0;
-        color: white;
-    }
-
     .home-button {
         color: white !important;
         font-family: 'Montserrat', sans-serif;
-        display: flex;
-        justify-content: space-evenly !important;
-    }
-
-    .white-button {
-        color: gray !important;
     }
 
     .button-text {
@@ -131,12 +116,7 @@
         transition: all 0.5s ease !important;
     }
 
-    .icon-wrapper {
-        width: 20%;
-    }
-
     .fa {
-        font-size: 5em;
         opacity: 0.5;
         transition: all 0.5s ease !important;
     }
@@ -145,27 +125,12 @@
         opacity: 0.9
     }
 
-    @media screen and (max-width: 800px) {
-        .fa {
-            font-size: 4em;
-        }
-    }
-
     @media screen and (max-width: 600px) {
-        .fa {
-            font-size: 3em;
-        }
         .title {
             font-size: 3em !important;
         }
         .button-text {
             font-size: 1.5em;
-        }
-    }
-
-    @media screen and (max-width: 400px) {
-        .fa {
-            font-size: 2em;
         }
     }
 </style>

@@ -6,7 +6,7 @@ import store from './store/store';
 import 'vuetify/dist/vuetify.min.css'
 // import './registerServiceWorker';
 // import 'roboto-fontface/css/roboto/roboto-fontface.css';
-// import '@fortawesome/fontawesome-free/css/all.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 Vue.config.productionTip = false;
 Vue.use(Vuetify);
 var app = new Vue({
