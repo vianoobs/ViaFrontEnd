@@ -1,210 +1,175 @@
-
 <template>
-    <div id="homeView">
-        <div id="budheader" class="box">Budget Stuff</div>
-        <div id="sidebar" class="box">Sidebar</div>
-        <div id="mobileSidebar">
-            <div id="mobileMenuSidebar" class="box"><button class="circle" v-bind:style="buttonCircle" v-on:click="miniOpen = !miniOpen">M</button></div>
-            <div v-if="miniOpen"><button id="statsBubble" class="minicircle" v-on:click="openBudget()">B</button></div>
-            <div v-if="miniOpen"><button id="purchaseBubble" class="minicircle" v-on:click="openPurchase()">P</button></div>
-            <div v-if="miniOpen"><button id="settingBubble" class="minicircle">O</button></div>
-        </div>
-        <div id="purchase" class="box">Purchase</div>
-        <div id="budgetAndFinancialsContainer" class="box flex-container scrollSide">
-            <budgetGroup></budgetGroup>
-        </div>
-        <div id="budfooter" class="box">Footer</div>
+    <div class="home-container">
+        <div class="title">VIA QUICK TRIPS</div>
+        <v-container grid-list-xl fill-height>
+            <v-layout column align-center justify-center>
+                <v-btn color="red accent-4" class="home-button" large v-on:click="locate(food)">
+                    <div class="button-text">Find Food</div>
+                    <span class="icon-wrapper"><v-icon class="fa">fas fa-utensils</v-icon></span></v-btn>
+                <v-btn color="red accent-4" class="home-button" large v-on:click="locate(drink)">
+                    <div class="button-text">Find Drinks</div>
+                    <span class="icon-wrapper"><v-icon class="fa">fas fa-coffee</v-icon></span></v-btn>
+                <v-btn color="red accent-4" class="home-button" large v-on:click="locate(attraction)">
+                    <div class="button-text">Find Attractions</div>
+                    <span class="icon-wrapper"><v-icon class="fa">fas fa-map-marked-alt</v-icon></span></v-btn>
+            </v-layout>
+        </v-container>
     </div>
 </template>
 
 <script>
-import budgetGroup from '../components/budgetGroup.vue';
+    import router from "../router";
+    import axios, {AxiosResponse} from "axios";
+    import { store } from '../store/store';
 
-export default {
-    name: 'homeView',
-    components: {
-        budgetGroup,
-    },
-    data: () => {
-        return {
-            buttonCircle: {
-                background: 'blue',
+    export default {
+        name: 'budgetGroup',
+        components: {
+            store
+        },
+        data: () => {
+            return {
+                food: "Food",
+                drink :"Drinks",
+                attraction : "Attractions",
+                lat : "",
+                long : "",
+                type : "type",
+            }
+        },
+
+        computed: {
+
+            user: {
+                get () {
+                    return store.state.user
+                },
+
+                set (value) {
+                    store.commit('changeUser', value)
+                }
+            }
+        },
+
+        //methods
+        methods: {
+
+            locate(type) {
+                this.type = type;
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(this.showPosition);
+                }
             },
-            miniOpen: false,
-        };
-    },
-    methods: {
-        openPurchase() {
-            document.getElementById('budgetAndFinancialsContainer').style.zIndex = '10';
-            document.getElementById('purchase').style.zIndex = '15';
-        },
-        openBudget() {
-            document.getElementById('purchase').style.zIndex = '10';
-            document.getElementById('budgetAndFinancialsContainer').style.zIndex = '15';
-        },
-    },
-    };
 
+            showPosition(position) {
+                this.lat = position.coords.latitude;
+                this.long = position.coords.longitude;
+                console.log(this.type)
+                console.log(this.lat);
+                console.log(this.long);
+                router.push({path: 'selection', query: {type: this.type, lat: this.lat, long: this.long}})
+            }
+        },
+        //mount
+        mounted() {
+            axios
+                .get('/api/user', { withCredentials: true }).then(res => {
+                console.log(res.data);
+                // store.commitSetUser(res.data);
+                console.log(store.state);
+                store.commit('changeUser', res.data);
+            });
+        }
+    }
 </script>
 
-<style scoped>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:300');
 
-        #homeView {
-            grid-template-columns: 100%;
-            grid-template-rows: 100%;
-            grid-gap: .1em;
-            height: 100vh;
-            display: grid;
-        }
-        #budheader {
-            display: none;
-            padding: 1em 0;
-        }
+    .v-btn {
+        height: 20%;
+    }
 
-        .scrollSide {
-            overflow-y: auto;
-        }
+    .router-view {
+        background-color: #343a40;
+    }
 
-        #budfooter, #sidebar {
-            display: none;
-        }
+    .home-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
 
-        #budgetAndFinancialsContainer{
-            position: absolute;
-            z-index: 10;
-            height: 100%;
-            width: 100%;
-        }
+    }
 
-        #purchase {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            z-index: 5;
-        }
+    .title {
+        display: flex;
+        align-items: flex-end;
+        font-size: 4em !important;
+        text-align: center;
+        padding: 2em 0 0 0;
+        color: white;
+    }
 
+    .home-button {
+        color: white !important;
+        font-family: 'Montserrat', sans-serif;
+        display: flex;
+        justify-content: space-evenly !important;
+    }
 
-        .flex-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
+    .white-button {
+        color: gray !important;
+    }
 
-    @media screen and (min-width: 600px) {
+    .button-text {
+        width: 80%;
+        font-size: 2em;
+        font-weight: bold;
+        transition: all 0.5s ease !important;
+    }
 
-        #homeView {
-            grid-template-columns: 6% 35% auto;
-            grid-template-rows: 100%;
-            grid-gap: .1em;
-            height: 100vh;
-            display: grid;
-        }
+    .icon-wrapper {
+        width: 20%;
+    }
 
-        #budgetAndFinancialsContainer {
-            position: relative;
-        }
+    .fa {
+        font-size: 5em;
+        opacity: 0.5;
+        transition: all 0.5s ease !important;
+    }
 
-        #sidebar {
-            display: block;
-        }
-        
-        #mobileSidebar {
-            display: none;
-        }
+    .home-button:hover .fa {
+        opacity: 0.9
+    }
 
-        #purchase {
-            position: relative;
-            display: block;
-            grid-row: 1/2;
-            grid-column: 3/4;
+    @media screen and (max-width: 800px) {
+        .fa {
+            font-size: 4em;
         }
     }
 
-    @media screen and (min-width: 1024px) {
-
-        #homeView {
-            grid-template-columns: 45% 55%;
-            grid-template-rows: .8fr 8.7fr .5fr;
-            grid-gap: .1em;
+    @media screen and (max-width: 600px) {
+        .fa {
+            font-size: 3em;
         }
-
-        #budheader {
-            display: block;
-            grid-row: 1/2;
-            grid-column: 1/3;
+        .title {
+            font-size: 3em !important;
         }
-
-        #budgetAndFinancialsContainer {
-            grid-row: 2/3;
-            grid-column: 1/2;
+        .button-text {
+            font-size: 1.5em;
         }
+    }
 
-        #purchase {
-            grid-row: 2/3;
-            grid-column: 2/3;
-        }
-
-        .flex-container {
-            flex-direction: row;
-        }
-
-        #sidebar {
-            display: none;
-        }
-
-        #budfooter {
-            display: block;
-            grid-row: 3/4;
-            grid-column: 1/3;
+    @media screen and (max-width: 400px) {
+        .fa {
+            font-size: 2em;
         }
     }
 </style>
 
-<style>
-
-    #statsBubble {
-        position: fixed;
-        bottom: 66px;
-        left: 13px;
-        background-color: green;
-    }
-
-    #settingBubble{
-        position: fixed;
-        bottom: 5px;
-        left: 76px;
-        background-color: red;
-    }
-
-    #purchaseBubble {
-        position: fixed;
-        bottom: 42px;
-        left: 53px;
-        background-color: purple;
-    }
-
-    #mobileMenuSidebar {
-        position: fixed;
-        bottom: -34px;
-        left: -33px;
-    }
-
-    #mobileSidebar {
-        position: fixed;
-        bottom: -34px;
-        left: -33px;
-        z-index: 10000;
-    }
-
-    .minicircle {
-        height: 35px;
-        width: 35px;
-        border-radius: 50%;
-    }
-
-    .circle {
-        height: 89px;
-        width: 89px;
-        border-radius: 50%;
+<style scoped>
+    button {
+        min-width: 100% !important;
     }
 </style>

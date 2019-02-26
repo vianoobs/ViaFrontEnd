@@ -1,50 +1,38 @@
 <template>
-    <div id="app">
-        <router-view></router-view>
-    </div>
+    <v-app>
+        <navbar></navbar>
+        <v-content>
+            <router-view class="router-view"></router-view>
+        </v-content>
+    </v-app>
 </template>
 
 <script>
+    import Navbar from '@/components/Navbar.vue';
 
-import Home from './views/Home.vue';
-import MainMobile from './views/MainMobile.vue';
-
-export default {
+    export default {
         name: 'App',
         components: {
-        Home,
-        MainMobile,
+            Navbar,
+        },
+        data() {
+            return {
+
+            };
         },
     };
 </script>
-
 <style>
-
-    * {
-        box-sizing: border-box;
+    v-app {
+        height: 100%;
+        width: 100%;
+        display: table;
     }
-
-    body {
-        margin: 0;
-        font-size: .7em;
+    .navbar {
+        display: table-row;
     }
-
-    .box {
-        background-color: orange;
+    .router-view {
+        width: 100%;
+        height: 100%;
     }
-
 </style>
-
-<style scoped>
-
-</style>
-<!--
-<template>
-    <div id="app">
-        <div id="nav">
-            <router-link to="/">Home</router-link> |
-            <router-link to="/about">About</router-link>
-        </div>
-        <router-view/>
-    </div>
--->
