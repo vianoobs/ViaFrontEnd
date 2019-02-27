@@ -9,7 +9,7 @@
             <v-flex v-for="card in cardz"
                     xs12 sm6 md4>
                 <v-card>
-                    <v-img src="https://picsum.photos/200/300/?random" aspect-ratio="1" alt="Image">
+                    <v-img :src="card.imageURL" aspect-ratio="1" alt="Image">
                         <span class="headline white--text pl-3 pt-3" v-text="">{{card.name}}</span>
                     </v-img>
                     <v-card-actions class="white justify-center">
