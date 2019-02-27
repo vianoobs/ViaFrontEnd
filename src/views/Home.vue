@@ -30,7 +30,7 @@
 
     export default {
 
-        name: 'budgetGroup',
+        name: 'Home',
         components: {
             store
         },

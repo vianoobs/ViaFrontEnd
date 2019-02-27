@@ -1,14 +1,15 @@
 <template>
     <v-toolbar app class="red accent-4">
-        <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-x>
+        <v-menu :close-on-content-click="false" :nudge-width="200" offset-x>
             <v-btn slot="activator" color="transparent" dark>
                <v-icon>fas fa-bars</v-icon>
             </v-btn>
             <v-list>
-                <v-list-tile @click="">
+                <!--v-if="user"-->
+                <v-list-tile  :to="{name: 'profile'}">
                     <v-list-tile-title>Profile</v-list-tile-title>
                 </v-list-tile>
-                <v-list-tile @click="">
+                <v-list-tile href="https://www.viainfo.net/" target="_blank">
                     <v-list-tile-title>
                         <svg class="svgmenu" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 504 360" style="enable-background:new 0 0 504 360;" xml:space="preserve">
                             <g>
@@ -46,12 +47,15 @@
 
     // import Weather from "../components/Weather.vue";
     import Login from "@/components/Login.vue";
+    import router from "../router";
 
     export default {
         name: 'Navbar',
         components: {
             Login
-        }
+        },
+
+        methods: {}
     }
 
 </script>

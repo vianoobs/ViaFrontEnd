@@ -25,6 +25,11 @@ export default new Router({
             component: function () { return import('./views/RoutePreview.vue');
             },
         },
+        {
+            path:'/profile',
+            name:'profile',
+            component: function () {return import('./views/Profile')}
+        }
     ],
 });
 //# sourceMappingURL=router.js.map

@@ -8,6 +8,10 @@
 </template>
 
 <script>
+    import Vue from 'vue';
+    import Vuetify from 'vuetify'
+    Vue.use(Vuetify);
+
     import Navbar from '@/components/Navbar.vue';
 
     export default {

@@ -9,6 +9,7 @@ import 'vuetify/dist/vuetify.min.css'
 import '@fortawesome/fontawesome-free/css/all.css';
 Vue.config.productionTip = false;
 Vue.use(Vuetify);
+
 var app = new Vue({
     router: router,
     store: store,

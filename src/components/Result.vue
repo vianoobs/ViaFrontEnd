@@ -96,23 +96,15 @@
             },
 
             url(){
-
                 if (store.state.user != '') {
-                    console.log(store.state.user)
                     axios
                         .post('http://localhost:8081/api/save-search', {
                             owner: store.state.user.userId,
                             name: this.$route.params.card.name,
-                            address: this.info[0].end_address
+                            address: this.info[0].end_address,
+                            imgURL: this.$route.params.card.image_url
                         }).then(res => {
                         console.log(res.data)
-                    });
-
-                    axios
-                        .post('http://localhost:8081/api/show-search', {
-                            owner: store.state.user.userId
-                        }).then(res => {
-                            console.log(res.data)
                     });
                 }
 
