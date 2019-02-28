@@ -6,11 +6,15 @@
         <v-subheader>Recent Routes</v-subheader>
         <v-layout row wrap>
             <v-spacer></v-spacer>
-            <v-flex v-for="card in cardz"
+            <v-flex v-for="(card, i) in cardz"
+                    :key="i"
                     xs12 sm6 md4>
                 <v-card>
                     <v-img :src="card.imageURL" aspect-ratio="1" alt="Image">
                         <span class="headline white--text pl-3 pt-3" v-text="">{{card.name}}</span>
+                        <v-layout align-end fill-height pa-3 white--text>
+                            <span class="title white--text pl-3 pb-3" v-text="">{{card.address}}</span>
+                        </v-layout>
                     </v-img>
                     <v-card-actions class="white justify-center">
                         <v-btn  v-for="(social, i) in socials"
@@ -40,14 +44,6 @@
                 types: ['Places to Be', 'Places to See'],
                 cardz: {},
                 socials: [
-                    {
-                        icon: 'fab fa-facebook',
-                        color: 'indigo'
-                    },
-                    {
-                        icon: 'fab fa-linkedin',
-                        color: 'cyan darken-1'
-                    },
                     {
                         icon: 'fab fa-yelp',
                         color: 'red accent-4'
